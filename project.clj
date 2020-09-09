@@ -11,7 +11,8 @@
                  [funcool/cuerdas "2020.03.26-3"]
                  [macchiato/fs "0.2.2"]
                  [org.clojure/clojure "1.10.1" :scope "provided"]
-                 [org.clojure/clojurescript "1.10.597" :scope "provided"]]
+                 [org.clojure/clojurescript "1.10.597" :scope "provided"]
+                 [org.clojure/core.async "1.3.610"]]
   :plugins [[lein-cljsbuild "1.1.6"]
             [lein-codox "0.10.2"]
             [lein-doo "0.1.7"]
@@ -42,15 +43,15 @@
   :codox {:language :clojurescript}
   :profiles {:test
              {:cljsbuild
-                   {:builds
-                    {:test
-                     {:source-paths ["src" "test"]
-                      :compiler     {:main          macchiato.runner
-                                     :output-to     "target/test/core.js"
-                                     :target        :nodejs
-                                     :optimizations :none
-                                     :source-map    true
-                                     :pretty-print  true}}}}
+              {:builds
+               {:test
+                {:source-paths ["src" "test"]
+                 :compiler     {:main          macchiato.runner
+                                :output-to     "target/test/core.js"
+                                :target        :nodejs
+                                :optimizations :none
+                                :source-map    true
+                                :pretty-print  true}}}}
               :doo {:build "test"}}}
   :aliases
   {"test"
